@@ -12,13 +12,31 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         //code
-        Member member = new Member();
-        member.setId(1L);
-        member.setName("HelloA");// JPA는 트랜잭션 안에서 실행되어야 한다.
+        try{
+            // 생성
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("HelloA");// JPA는 트랜잭션 안에서 실행되어야 한다.
+            em.persist(member);
 
-        em.persist(member);
-        tx.commit();
-        em.close();
+            // 조회
+            Member findMember = em.find(Member.class, 1L);// pk로 조회
+            System.out.println("findMember.id = "+findMember.getId());
+            System.out.println("findMember.name = "+findMember.getName());//1차 캐시에 저장되어있었어서 hibernate가 select 쿼리를 날리지 않음.
+            // 삭제
+//            em.remove(findMember);
+            // 수정
+//            findMember.setName("HelloJPA");
+//            em.persist(findMember); -> 저장하지 않아도 된다.
+
+
+            tx.commit();
+        }catch(Exception e){
+            tx.rollback();
+        }finally{
+            em.close();
+        }
+
         emf.close();
     }
 }

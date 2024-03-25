@@ -2,8 +2,10 @@ package hellojpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "MEMBER")// 이름이 다를 경우 다음과 같이 매핑 가능
 public class Member {
     @Id // pk 를 알려줌.
     private Long id;
