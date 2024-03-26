@@ -1,5 +1,7 @@
 package hellojpa;
 
+import hellojpa.domain.Order;
+import hellojpa.domain.OrderItem;
 import jakarta.persistence.*;
 
 public class JpaMain {
@@ -13,14 +15,9 @@ public class JpaMain {
         tx.begin();
         //code
         try {
-            ExTeam team = new ExTeam();
-            team.setName("teamA");
-            em.persist(team);
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());
 
-            ExMember member = new ExMember();
-            member.setName("member1");
-            member.setTeamId(team.getId());
-            em.persist(member);
 
 
 

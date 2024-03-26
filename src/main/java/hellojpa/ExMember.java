@@ -34,11 +34,5 @@ public class ExMember {
         this.name = name;
     }
 
-    public Long getTeamId() {
-        return teamId;
-    }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
-    }
 }
