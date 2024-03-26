@@ -13,6 +13,16 @@ public class JpaMain {
         tx.begin();
         //code
         try {
+            ExTeam team = new ExTeam();
+            team.setName("teamA");
+            em.persist(team);
+
+            ExMember member = new ExMember();
+            member.setName("member1");
+            member.setTeamId(team.getId());
+            em.persist(member);
+
+
 
             tx.commit();
         } catch (Exception e) {
