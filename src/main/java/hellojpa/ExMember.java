@@ -2,6 +2,9 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class ExMember {
     @Id @GeneratedValue
@@ -17,6 +20,13 @@ public class ExMember {
     @JoinColumn(name = "TEAM_ID")// join할 컬럼
     private ExTeam team;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private ExLocker locker;
+
+    @ManyToMany
+    @JoinTable(name = "MEMBER_PRODUCT") // 연결 테이블을 만들어준다.
+    private List<ExProduct> products = new ArrayList<>();
 
     public Long getId() {
         return id;
