@@ -27,8 +27,8 @@ public class ExMember {
     //    @ManyToMany
 //    @JoinTable(name = "MEMBER_PRODUCT") // 연결 테이블을 만들어준다.
 //    private List<ExProduct> products = new ArrayList<>();
-    @OneToMany(mappedBy = "member")
-    private List<ExMemberProduct> memberProducts = new ArrayList<>();
+//    @OneToMany(mappedBy = "ExMemberProduct")
+//    private List<ExMemberProduct> memberProducts = new ArrayList<>();
 
     public Long getId() {
         return id;
