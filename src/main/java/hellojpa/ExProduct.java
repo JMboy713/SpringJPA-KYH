@@ -1,8 +1,9 @@
 package hellojpa;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ExProduct {
@@ -11,6 +12,11 @@ public class ExProduct {
     private Long id;
 
     private String name;
+
+//    @ManyToMany(mappedBy = "products")
+//    private List<ExMember> members = new ArrayList<>();
+    @OneToMany(mappedBy = "product")
+    private List<ExMemberProduct> memberProducts = new ArrayList<>();
 
     public Long getId() {
         return id;
